@@ -9,10 +9,13 @@ repositories {
 
 
 dependencies {
-	implementation project(':Solutions.Triangle.AbstractMachine')
+	implementation project(':Triangle.AbstractMachine')
 	testImplementation group: 'junit', name: 'junit', version: '4.13.2'
 }
 
 application {
 	mainClass = 'Triangle.Compiler'
 }
+
+// allow access to programs for unit tests
+sourceSets.test.resources.srcDir file("$rootDir/programs")

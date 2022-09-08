@@ -71,7 +71,7 @@ public class Compiler {
 		}
 
 		scanner = new Scanner(source);
-		reporter = new ErrorReporter();
+		reporter = new ErrorReporter(false);
 		parser = new Parser(scanner, reporter);
 		checker = new Checker(reporter);
 		emitter = new Emitter(reporter);
@@ -80,7 +80,7 @@ public class Compiler {
 
 		// scanner.enableDebugging();
 		theAST = parser.parseProgram(); // 1st pass
-		if (reporter.numErrors == 0) {
+		if (reporter.getNumErrors() == 0) {
 			// if (showingAST) {
 			// drawer.draw(theAST);
 			// }
@@ -89,13 +89,13 @@ public class Compiler {
 			if (showingAST) {
 				drawer.draw(theAST);
 			}
-			if (reporter.numErrors == 0) {
+			if (reporter.getNumErrors() == 0) {
 				System.out.println("Code Generation ...");
 				encoder.encodeRun(theAST, showingTable); // 3rd pass
 			}
 		}
 
-		boolean successful = (reporter.numErrors == 0);
+		boolean successful = (reporter.getNumErrors() == 0);
 		if (successful) {
 			emitter.saveObjectProgram(objectName);
 			System.out.println("Compilation was successful.");
