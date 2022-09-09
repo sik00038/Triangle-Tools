@@ -33,8 +33,8 @@ public class TestScanner {
 	
 
 	@Test
-	public void testPoundDemo() {
-		compileExpectFailure("/pounddemo.tri");
+	public void testBarDemo() {
+		compileExpectFailure("/bardemo.tri");
 	}
 	
 
