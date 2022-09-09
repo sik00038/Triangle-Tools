@@ -1,5 +1,7 @@
 apply plugin: 'java'
 
+sourceCompatibility = 11
+
 subprojects.each { subproject ->
   evaluationDependsOn(subproject.path)
 }
