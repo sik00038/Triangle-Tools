@@ -37,6 +37,12 @@ public class TestScanner {
 		compileExpectFailure("/pounddemo.tri");
 	}
 	
+
+	@Test
+	public void testRepeatUntil() {
+		compileExpectFailure("/repeatuntil.tri");
+	}
+	
 	
 	
 	private void compileExpectSuccess(String filename) {
