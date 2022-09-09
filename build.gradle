@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+subprojects.each { subproject ->
+  evaluationDependsOn(subproject.path)
+}
+
+jar {
+  from subprojects.sourceSets.main.output
+}
