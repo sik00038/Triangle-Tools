@@ -31,6 +31,12 @@ public class TestScanner {
 		compileExpectFailure("/hi-newcomment2.tri");
 	}
 	
+
+	@Test
+	public void testPoundDemo() {
+		compileExpectFailure("/pounddemo.tri");
+	}
+	
 	
 	
 	private void compileExpectSuccess(String filename) {
