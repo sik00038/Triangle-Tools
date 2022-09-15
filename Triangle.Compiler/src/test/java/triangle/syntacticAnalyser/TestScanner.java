@@ -49,8 +49,9 @@ public class TestScanner {
 		// build.gradle has a line sourceSets.test.resources.srcDir file("$rootDir/programs")
 		// which adds the programs directory to the list of places Java can easily find files
 		// getResource() below searches for a file, which is in /programs 
-		SourceFile source = SourceFile.ofPath(this.getClass().getResource(filename).getFile().toString());
-
+		//SourceFile source = SourceFile.ofPath(this.getClass().getResource(filename).getFile().toString());
+		SourceFile source = SourceFile.fromResource(filename);
+		
 		Scanner scanner = new Scanner(source);
 		ErrorReporter reporter = new ErrorReporter(true);
 		Parser parser = new Parser(scanner, reporter);
@@ -63,7 +64,8 @@ public class TestScanner {
 	}
 	
 	private void compileExpectFailure(String filename) {
-		SourceFile source = SourceFile.ofPath(this.getClass().getResource(filename).getFile().toString());
+		//SourceFile source = SourceFile.ofPath(this.getClass().getResource(filename).getFile().toString());
+		SourceFile source = SourceFile.fromResource(filename);
 		Scanner scanner = new Scanner(source);
 		ErrorReporter reporter = new ErrorReporter(true);
 		Parser parser = new Parser(scanner, reporter);
