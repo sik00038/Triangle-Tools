@@ -73,6 +73,16 @@ public final class Scanner {
 				takeIt();
 		}
 			break;
+			
+		// new type of comment, the # comment, same as before when it comes to code
+		case '#':{
+			takeIt();
+			while((currentChar != SourceFile.EOL) && (currentChar != SourceFile.EOT))
+				takeIt();
+			if(currentChar == SourceFile.EOL)
+				takeIt();
+		}
+			break;
 
 		// whitespace
 		case ' ':
@@ -252,7 +262,7 @@ public final class Scanner {
 		currentlyScanningToken = false;
 		// skip any whitespace or comments
 		while (currentChar == '!' || currentChar == ' ' || currentChar == '\n' || currentChar == '\r'
-				|| currentChar == '\t')
+				|| currentChar == '\t' || currentChar == '#')
 			scanSeparator();
 
 		currentlyScanningToken = true;
