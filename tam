@@ -1,0 +1,23 @@
+#!/bin/bash
+
+RED='\033[0;31m'   # Red
+GRN='\033[0;32m' # Green
+NC='\033[0m'       # No Color
+
+file=""
+
+if [ -z "$1" ]
+    then
+        printf "${RED}Usage: $0 file${NC}"
+        exit 1 # Exit with code 1, failure
+    else
+        file=$1
+fi
+
+printf "${GRN}Compiling file: $1.tri to $1.tam ...${NC}\n"
+# Compile to tam
+java -cp build/libs/Triangle-Tools.jar triangle.Compiler programs/$1.tri -o=$1.tam  &> /dev/null
+
+printf "${GRN}Running file: $1.tam ...${NC}\n"
+# Run the Program
+java -cp build/libs/Triangle-Tools.jar triangle.abstractMachine.Interpreter $1.tam 
