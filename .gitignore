@@ -63,3 +63,6 @@ local.properties
 
 # tam files
 *.tam
+
+# Build folder
+/build/
