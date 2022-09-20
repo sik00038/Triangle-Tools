@@ -1,0 +1,46 @@
+! Program that will: read two ints, print their sum and their product. If they are the same, print "Same"
+
+! Global Consts, Funcs.
+let 
+    type String ~ array 6 of Char; ! String type implemented, not used yet
+
+    var num1 : Integer;
+    var num2 : Integer;
+
+
+    func sum(x : Integer, y : Integer) : Integer ~
+        x + y;  ! Return x + y
+
+    func product(x : Integer, y : Integer) : Integer ~
+        x * y;  ! Return x * y
+
+    func isSame(x : Integer, y : Integer) : Boolean ~
+        if x = y then true else false
+
+! Main Loop
+in
+    begin
+    num1 := 0;
+    num2 := 0; ! Init. values to 0
+
+    getint(var num1);
+    getint(var num2); ! Get user input
+
+
+    ! Sum
+    putint(num1); put('+'); put(' '); putint(num2); put(' '); put('='); put(' '); 
+    putint(sum(num1, num2)); puteol();
+
+    puteol();
+
+    ! Product
+    putint(num1); put(' '); put('*'); put(' '); putint(num2); put(' '); put('='); put(' '); 
+    putint(product(num1, num2)); puteol();
+
+
+    if isSame(num1, num2) = true then 
+        put('S'); put('a'); put('m'); put('e'); puteol();
+    else 
+        puteol();
+
+    end
