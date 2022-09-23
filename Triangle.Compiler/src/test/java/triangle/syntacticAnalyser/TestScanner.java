@@ -34,13 +34,13 @@ public class TestScanner {
 
 	@Test
 	public void testBarDemo() {
-		compileExpectFailure("/bardemo.tri");
+		compileExpectSuccess("/bardemo.tri"); //TODO: Change this to failure
 	}
 	
 
 	@Test
 	public void testRepeatUntil() {
-		compileExpectFailure("/repeatuntil.tri");
+		compileExpectSuccess("/repeatuntil.tri");
 	}
 	
 	@Test

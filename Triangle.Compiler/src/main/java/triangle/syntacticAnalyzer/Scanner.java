@@ -35,7 +35,7 @@ public final class Scanner {
 
 	private boolean isOperator(char c) {
 		return (c == '+' || c == '-' || c == '*' || c == '/' || c == '=' || c == '<' || c == '>' || c == '\\'
-				|| c == '&' || c == '@' || c == '%' || c == '^' || c == '?');
+				|| c == '&' || c == '@' || c == '%' || c == '^' || c == '?' || c == '|');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -64,7 +64,7 @@ public final class Scanner {
 	private void scanSeparator() {
 		switch (currentChar) {
 		
-		// comment
+		// ! comment
 		case '!': {
 			takeIt();
 			while ((currentChar != SourceFile.EOL) && (currentChar != SourceFile.EOT))
@@ -199,6 +199,13 @@ public final class Scanner {
 			while (isOperator(currentChar))
 				takeIt();
 			return Token.OPERATOR;
+			
+		// TODO: Bar operator, week 3
+		case '|':
+			takeIt();
+			while(isOperator(currentChar))
+				takeIt();
+		return Token.OPERATOR;
 
 		case '\'':
 			takeIt();

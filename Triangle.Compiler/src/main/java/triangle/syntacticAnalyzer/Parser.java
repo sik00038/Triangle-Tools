@@ -37,6 +37,7 @@ import triangle.abstractSyntaxTrees.commands.Command;
 import triangle.abstractSyntaxTrees.commands.EmptyCommand;
 import triangle.abstractSyntaxTrees.commands.IfCommand;
 import triangle.abstractSyntaxTrees.commands.LetCommand;
+import triangle.abstractSyntaxTrees.commands.RepeatCommand;
 import triangle.abstractSyntaxTrees.commands.SequentialCommand;
 import triangle.abstractSyntaxTrees.commands.WhileCommand;
 import triangle.abstractSyntaxTrees.declarations.ConstDeclaration;
@@ -320,7 +321,7 @@ public class Parser {
 		}
 			break;
 
-		case Token.WHILE: {
+		case Token.WHILE: { //while expr. do command
 			acceptIt();
 			Expression eAST = parseExpression();
 			accept(Token.DO);
@@ -330,6 +331,16 @@ public class Parser {
 		}
 			break;
 
+		case Token.REPEAT: { //repeat command until expr.
+			acceptIt(); 
+			Command cAST = parseSingleCommand();
+			accept(Token.UNTIL); 		//check that there is a "until"
+			Expression eAST = parseExpression();
+			finish(commandPos); 
+			commandAST = new RepeatCommand(eAST, cAST, commandPos); 
+		}
+			break;
+			
 		case Token.SEMICOLON:
 		case Token.END:
 		case Token.ELSE:
