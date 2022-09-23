@@ -14,11 +14,14 @@ if [ -z "$1" ]
         file=$1
 fi
 
-printf "${GRN}Compiling file: $1.tri to $1.tam ...${NC}\n"
+printf "${GRN}[INFO] Compiling file: $1.tri to $1.tam ...${NC}\n"
 # Compile to tam
 #java -cp build/libs/Triangle-Tools.jar triangle.Compiler programs/$1.tri -o=$1.tam  &> /dev/null #Quiet output, not handy!
-java -cp build/libs/Triangle-Tools.jar triangle.Compiler programs/$1.tri -o=$1.tam
-
-printf "${GRN}Running file: $1.tam ...${NC}\n"
-# Run the Program
-java -cp build/libs/Triangle-Tools.jar triangle.abstractMachine.Interpreter $1.tam 
+if java -cp build/libs/Triangle-Tools.jar triangle.Compiler programs/$1.tri -o=$1.tam
+    then 
+        printf "${GRN}[INFO] Running file: $1.tam ...${NC}\n"
+        java -cp build/libs/Triangle-Tools.jar triangle.abstractMachine.Interpreter $1.tam 
+    else
+        printf "${RED}[ERROR] Could not complie $1.tri ...${NC}"
+        exit 1
+fi
