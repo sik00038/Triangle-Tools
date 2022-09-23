@@ -15,13 +15,15 @@ if [ -z "$1" ]
 fi
 
 printf "${GRN}[INFO] Compiling file: $1.tri to $1.tam ...${NC}\n"
+
 # Compile to tam
-#java -cp build/libs/Triangle-Tools.jar triangle.Compiler programs/$1.tri -o=$1.tam  &> /dev/null #Quiet output, not handy!
-if java -cp build/libs/Triangle-Tools.jar triangle.Compiler programs/$1.tri -o=$1.tam
+if java -cp build/libs/Triangle-Tools.jar triangle.Compiler programs/$1.tri -o=$1.tam &> /dev/null #quiet
     then 
         printf "${GRN}[INFO] Running file: $1.tam ...${NC}\n"
         java -cp build/libs/Triangle-Tools.jar triangle.abstractMachine.Interpreter $1.tam 
     else
         printf "${RED}[ERROR] Could not complie $1.tri ...${NC}"
+        err=$(java -cp build/libs/Triangle-Tools.jar triangle.Compiler programs/$1.tri -o=$1.tam)
+        printf "${RED}\n$err\n${NC}"
         exit 1
 fi

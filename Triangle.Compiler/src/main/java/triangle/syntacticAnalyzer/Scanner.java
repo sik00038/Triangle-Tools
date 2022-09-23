@@ -84,6 +84,18 @@ public final class Scanner {
 		}
 			break;
 
+		// new type of comment, the multi-line $ comment
+		case '$':{
+			takeIt();
+			//check if it is not the comment char or EOT, skipping new lines (no EOL)
+			while((currentChar != '$') && (currentChar != SourceFile.EOT))
+				takeIt();
+			//if we reach another $, takeIt and move on, we've reached the end of the multi-line comment
+			if(currentChar == '$')
+				takeIt();
+		}
+			break;
+		
 		// whitespace
 		case ' ':
 		case '\n':
@@ -262,7 +274,7 @@ public final class Scanner {
 		currentlyScanningToken = false;
 		// skip any whitespace or comments
 		while (currentChar == '!' || currentChar == ' ' || currentChar == '\n' || currentChar == '\r'
-				|| currentChar == '\t' || currentChar == '#')
+				|| currentChar == '\t' || currentChar == '#' || currentChar == '$')
 			scanSeparator();
 
 		currentlyScanningToken = true;
