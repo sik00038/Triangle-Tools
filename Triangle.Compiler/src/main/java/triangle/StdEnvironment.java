@@ -42,5 +42,8 @@ public final class StdEnvironment {
 	public static ProcDeclaration getDecl, putDecl, getintDecl, putintDecl, geteolDecl, puteolDecl;
 
 	public static FuncDeclaration chrDecl, ordDecl, eolDecl, eofDecl;
+	
+	//keep the bar separate for practical 3 (week 3) work!
+	public static UnaryOperatorDeclaration barDecl;
 
 }

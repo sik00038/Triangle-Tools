@@ -953,7 +953,11 @@ public final class Checker implements ActualParameterVisitor<FormalParameter, Vo
 				StdEnvironment.booleanType);
 		StdEnvironment.notlessDecl = declareStdBinaryOp(">=", StdEnvironment.integerType, StdEnvironment.integerType,
 				StdEnvironment.booleanType);
+		
+		//add the new bar operator!
+		StdEnvironment.barDecl = declareStdUnaryOp("|", StdEnvironment.integerType, StdEnvironment.integerType);
 
+		
 		StdEnvironment.charDecl = declareStdType("Char", StdEnvironment.charType);
 		StdEnvironment.chrDecl = declareStdFunc("chr",
 				new SingleFormalParameterSequence(
