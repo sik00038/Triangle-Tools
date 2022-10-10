@@ -16,6 +16,7 @@ public class RepeatCommand extends Command {
 		return v.visitRepeatCommand(this, arg);
 	}
 
-	public final Expression E;
+	//public final Expression E;
+	public Expression E;
 	public final Command C;
 }
