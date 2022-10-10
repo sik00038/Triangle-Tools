@@ -9,12 +9,19 @@ in
         b := 2;
         
         putint(a);
+<<<<<<< HEAD
         puteol();
+=======
+	puteol();
+>>>>>>> ce307a11a6c71de9c69bd0a4c91205bb6437f6e9
         putint(b);
         puteol();
         putint(|a);
         puteol();
         putint(|b);
         puteol()
+<<<<<<< HEAD
 
+=======
+>>>>>>> ce307a11a6c71de9c69bd0a4c91205bb6437f6e9
     end
